@@ -36,7 +36,7 @@ def set_context(text):
     global context_text
     context_text = text
     build_model()
-    return "Context set successfully. You can now ask questions."
+    return "İşlem tamam."
 
 def chat(context, question):
     global context_text
@@ -47,14 +47,14 @@ def chat(context, question):
         response = chat_session.send_message([context, question])
         return response.text
     except Exception as e:
-        return f"An error occurred: {str(e)}"
+        return f"Hata: {str(e)}"
 
 def quit_app():
     iface.close()
 
 with gr.Blocks() as iface:
     gr.Markdown("# Gemini QA System")
-    gr.Markdown("metni yapıştır ve sorunu sor.")
+    gr.Markdown("Metni yapıştırıp ve sorunu sorabilirsin.")
     
     with gr.Row():
         context_input = gr.Textbox(lines=5, label="Context", placeholder="Paste your context text here...")
